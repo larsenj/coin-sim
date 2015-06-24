@@ -15,7 +15,7 @@ clean:
 	rm ThreadCells a.out *.o
 
 test:
-	g++ -std=c++0x test.o Cells.o LineCell.o -o testmain
+	g++ -std=c++0x test.o Cells.o LineCell.o LdrCell.o LogCell.o SctCell.o MedCell.o -o testmain
 
 test.o:
 	g++ -c -std=c++0x test.cpp

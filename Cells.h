@@ -1,7 +1,7 @@
 #ifndef CELLS_H
 #define CELLS_H
 
-enum cell { line, ldr, log, scout, med };
+enum cell { line, ldr, log, sct, med };
 
 class Cells {
     protected:
