@@ -6,9 +6,9 @@
 #ifndef MEDCELL_H
 #define MEDCELL_H
 
-#include "Cells.h"
+#include "Cell.h"
 
-class MedCell:public Cells {
+class MedCell:public Cell {
     private:
         int supplies; //keep this in for use later
         //bool leader;  no leaders at lower levels
@@ -21,7 +21,6 @@ class MedCell:public Cells {
         //inline bool setLeader(bool ldr) { leader = ldr; }
         //inline bool isSupplied() { return supplier; }
         //inline bool setSupplied(bool sup) { supplier = sup; }
-        ~MedCell();
 };
 
 #endif

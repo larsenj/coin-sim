@@ -1,9 +1,9 @@
 #ifndef LINECELL_H
 #define LINECELL_H
 
-#include "Cells.h"
+#include "Cell.h"
 
-class LineCell:public Cells {
+class LineCell:public Cell {
     private:
         int supplies;
         bool leader;
@@ -16,7 +16,6 @@ class LineCell:public Cells {
         inline bool setLeader(bool ldr) { leader = ldr; }
         inline bool isSupplied() { return supplier; }
         inline bool setSupplied(bool sup) { supplier = sup; }
-        ~LineCell();
 };
 
 #endif

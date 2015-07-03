@@ -1,24 +1,33 @@
+/*
+    Province.h
+    Represents a politically demarcated piece of terrain. May contain any number
+    of districts.
+    FF will operate here at the BN level.
+*/
+
 #ifndef PROVINCE_H
 #define PROVINCE_H
 
 #include <string>
 #include <vector>
-#include "Cells.h"
+#include <memory>
+#include "GhkCo.h"
 
 class Province {
     private:
-        std::vector<Cells> cellVector;//holds all Cells of the Province
-        int daySIG[7]; //holds number of SIGACTS per day per week
+        std::vector<std::unique_ptr<GhkCo>> efVector;//holds all Companies of the Province
         int wCount; //stores total number of SIGACTS for the week
+        int ID; //first digit of number represents this province
     public:
         std::string name;
-        Province();
-        Province(std::string);
-        Province(std::string, int);
+        Province(){};
+        Province(std::string); //name
+        Province(std::string, int, int); //name, id, companies
         inline int getWeekCount() { return wCount; }
-        int dayEvents();
-        void weekEvents();
-        void weekRollup();
+        inline int getID() { return ID; }
+        inline std::string getName() { return name; }
+        void weekEvents(); //runs the weekEvents function for all subordinates
+        ~Province(){}
 };
 
 #endif

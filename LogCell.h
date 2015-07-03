@@ -7,9 +7,9 @@
 #ifndef LOGCELL_H
 #define LOGCELL_H
 
-#include "Cells.h"
+#include "Cell.h"
 
-class LogCell:public Cells {
+class LogCell:public Cell {
     private:
         int supplies;
         bool leader;
@@ -22,7 +22,6 @@ class LogCell:public Cells {
         inline bool setLeader(bool ldr) { leader = ldr; }
         inline bool isSupplied() { return supplier; }
         inline bool setSupplied(bool sup) { supplier = sup; }
-        ~LogCell();
 };
 
 #endif

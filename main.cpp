@@ -1,14 +1,9 @@
 /*
- * Name: ThreadCells
+ * Name: EFOrg
  * Author: Jon Larsen
- * Description:
- *
+ * Description: The purpose of this iteration is to test creating the line and
+ *              block hierarchy of forces
  */
-
-/*
-Error codes:
-1: incorrect usage
-*/
 
 #include <vector>
 #include <thread>
@@ -23,6 +18,7 @@ int validInput();
 
 int main(int argc, char* argv[]){
     
+    
     //check for correct usage
     if (argc != 2) {
         std::cerr << "Usage: ThreadCells [number of threads]\n";
@@ -36,17 +32,17 @@ int main(int argc, char* argv[]){
     Province** theater = new Province*[numProvinces];
 
     std::string provinceName;
-    int numCells;
+    int numDistricts;
 
     //populate the theater
     for (int i = 0; i < numProvinces; i++){
         std::cin.ignore(10, '\n'); //deal with the C++ trailing endline problem
         std::cout << "Enter the name of province #" << i+1 << " : ";
         getline(std::cin, provinceName);
-        std::cout << "How many cells estimated in " << provinceName << "? ";
-        numCells = validInput();
+        std::cout << "How many districts in " << provinceName << "? ";
+        numDistricts = validInput();
 
-        theater[i] = new Province(provinceName, numCells);
+        theater[i] = new Province(provinceName, i+1, numDistricts);
     }
 
     //loop for SIGACTS
@@ -81,11 +77,11 @@ int main(int argc, char* argv[]){
         }
 
         for (int j = 0; j < numProvinces; j++)
-            theater[j]->weekRollup();
+            theater[j]->weekEvents();
 
         std::cout << "\nSummary:" << std::endl;
         for (int k = 0; k < numProvinces; k++)
-            std::cout << "\t" << theater[k]->name << " had " << 
+            std::cout << "\t" << theater[k]->getName() << " had " << 
                 theater[k]->getWeekCount() << " SIGACTS." << std::endl;
 
         std::cout << "Run another week?(y/n) ";
@@ -109,4 +105,3 @@ int validInput(){
     }
     return x;
 }
-

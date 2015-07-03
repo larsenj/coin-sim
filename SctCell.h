@@ -6,9 +6,9 @@
 #ifndef SCTCELL_H
 #define SCTCELL_H
 
-#include "Cells.h"
+#include "Cell.h"
 
-class SctCell:public Cells {
+class SctCell:public Cell {
     private:
         int supplies;
         //bool leader; No "leader" at lower levels
@@ -21,7 +21,6 @@ class SctCell:public Cells {
         //inline bool setLeader(bool ldr) { leader = ldr; }
         //inline bool isSupplied() { return supplier; }
         //inline bool setSupplied(bool sup) { supplier = sup; }
-        ~SctCell();
 };
 
 #endif

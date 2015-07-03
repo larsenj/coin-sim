@@ -1,30 +1,35 @@
-
-ThreadCells: main.o Province.o Cells.o 
-	g++ -std=c++0x -pthread main.o Province.o Cells.o -o ThreadCells
+EFOrg: main.o GhkGroup.o Ghk.o GhkCo.o Cell.o Province.o
+	g++ -std=c++0x -Wall -pthread main.o Province.o Ghk.o GhkGroup.o GhkCo.o Cell.o LineCell.o LdrCell.o LogCell.o SctCell.o MedCell.o -o EFOrg
 
 main.o: main.cpp
 	g++ -c -std=c++0x -pthread main.cpp
 
+Ghk.o: Ghk.cpp
+	g++ -c -std=c++0x Ghk.cpp
+
+GhkGroup.o: GhkGroup.cpp
+	g++ -c -std=c++0x GhkGroup.cpp
+
+GhkCo.o: GhkCo.cpp
+	g++ -c -std=c++0x GhkCo.cpp
+
+Cell.o: Cell.cpp
+	g++ -c -std=c++0x Cell.cpp
+
 Province.o: Province.cpp
 	g++ -c -std=c++0x Province.cpp
 
-Cells.o: Cells.cpp
-	g++ -c Cells.cpp
+testmain:
+	g++ -std=c++0x -Wall test.o Province.o Ghk.o GhkGroup.o GhkCo.o Cell.o LineCell.o LdrCell.o LogCell.o SctCell.o MedCell.o -o testmain
 
-clean:
-	rm ThreadCells a.out *.o
-
-test:
-	g++ -std=c++0x test.o Cells.o LineCell.o LdrCell.o LogCell.o SctCell.o MedCell.o -o testmain
-
-test.o:
+test.o: test.cpp
 	g++ -c -std=c++0x test.cpp
 
-LineCell.o:
-	g++ -c -std=c++0x LineCell.cpp
+cells:
+	g++ -c -std=c++0x *Cell.cpp 
 
-build:
-	g++ -c -std=c++0x *.cpp *.h
+clean:
+	rm EFOrg testmain *.o 
 
 #target: dependencies
 #	system command

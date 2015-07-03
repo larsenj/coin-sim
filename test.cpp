@@ -1,9 +1,11 @@
-#include "LineCell.h"
-#include "LogCell.h"
-#include "LdrCell.h"
-#include "SctCell.h"
-#include "MedCell.h"
+#include "CellWrapper.h"
+#include "GhkGroup.h"
+#include "GhkCo.h"
+#include "Province.h"
 #include <iostream>
+#include <string>
+
+using namespace std;
 
 int main() {
     std::cout << "\nTesting line cell:" << std::endl;
@@ -51,6 +53,30 @@ int main() {
     MedCell e(1, 1, 1, 1);
     std::cout << "Type: " << e.cellName[e.getType()] << std::endl;
     std::cout << "Power: " << e.getPower() << std::endl;
+
+
+    std::cout << "\nTesting GhkGroup" << std::endl;
+    GhkGroup ggroup(10000, 1);
+    std::cout << "GhkGroup name is: " << ggroup.getID() << std::endl;
+    for (int i = 0; i < 3; i++)
+        std::cout << "The cell ID is: " << ggroup.getCellID(i) << std::endl;
+
+    std::cout << "\nTesting GhkCo" << std::endl;
+    GhkCo gco(1000000, 1);
+    std::cout << "GhkCo name is: " << gco.getID() << std::endl;
+    std::cout << "Members are:" << std::endl;
+    gco.printMemberIDs();
+    std::cout << "Test events" << std::endl;
+    int wE = gco.weekEvents();
+    std::cout << wE << " should be " << gco.getWeekEvents() << std::endl;
+
+    std::cout << "\nTesting Province" << std::endl;
+    Province p("Oz", 1, 2);
+    std::cout << p.getName() << "'s ID is " << p.getID() << std::endl;
+    cout << "Running weekEvents\n----------------------" << endl;
+    p.weekEvents();
+    cout << "\nwCount is " << p.getWeekCount() << endl;
+
 
     std::cout << std::endl;
 

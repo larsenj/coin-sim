@@ -7,9 +7,9 @@
 #ifndef LDRCELL_H
 #define LDRCELL_H
 
-#include "Cells.h"
+#include "Cell.h"
 
-class LdrCell:public Cells {
+class LdrCell:public Cell {
     private:
         int supplies;
         bool leader;
@@ -22,7 +22,6 @@ class LdrCell:public Cells {
         inline bool setLeader(bool ldr) { leader = ldr; }
         inline bool isSupplied() { return supplier; }
         inline bool setSupplied(bool sup) { supplier = sup; }
-        ~LdrCell();
 };
 
 #endif
