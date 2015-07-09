@@ -16,7 +16,7 @@ class SctCell:public Cell {
 
     public:
         SctCell();
-        SctCell(int, int);
+        SctCell(int, int, int);
         //inline bool hasLeader() { return leader; }
         //inline bool setLeader(bool ldr) { leader = ldr; }
         //inline bool isSupplied() { return supplier; }

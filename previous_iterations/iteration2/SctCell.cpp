@@ -6,7 +6,7 @@
 #include <iostream>
 #include "SctCell.h"
 
-SctCell::SctCell(int n, int pwr):Cell(n, sct, 3, pwr){}
+SctCell::SctCell(int n, int num, int pwr):Cell(n, sct, num, pwr){}
 
 
 

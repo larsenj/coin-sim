@@ -6,7 +6,7 @@
 #include <iostream>
 #include "MedCell.h"
 
-MedCell::MedCell(int n, int pwr):Cell(n, med, 3, pwr), supplies(100){}
+MedCell::MedCell(int n, int num, int pwr, int stock):Cell(n, med, num, pwr), supplies(stock){}
 
 
 

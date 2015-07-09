@@ -17,7 +17,7 @@ class LogCell:public Cell {
 
     public:
         LogCell();
-        LogCell(int, int, int, int, bool, bool);
+        LogCell(int, int);
         inline bool hasLeader() { return leader; }
         inline bool setLeader(bool ldr) { leader = ldr; }
         inline bool isSupplied() { return supplier; }

@@ -6,7 +6,7 @@
 #include <iostream>
 #include "LineCell.h"
 
-LineCell::LineCell(int n, int pwr):Cell(n, line, 5, pwr), supplies(100), leader(true), supplier(true){}
+LineCell::LineCell(int n, int num, int pwr, int stock, bool lead, bool sup):Cell(n, line, num, pwr), supplies(stock), leader(lead), supplier(sup){}
 
 
 

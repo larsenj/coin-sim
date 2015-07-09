@@ -11,7 +11,7 @@ class LineCell:public Cell {
 
     public:
         LineCell();
-        LineCell(int, int);
+        LineCell(int, int, int, int, bool, bool);
         inline bool hasLeader() { return leader; }
         inline bool setLeader(bool ldr) { leader = ldr; }
         inline bool isSupplied() { return supplier; }

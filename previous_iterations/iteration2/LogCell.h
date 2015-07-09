@@ -1,17 +1,23 @@
-#ifndef LINECELL_H
-#define LINECELL_H
+/*
+    LogCell.cpp
+    The logistics cells supplies materiel to the line cells at a faster rate 
+    then they would otherwise be supplied.
+*/
+
+#ifndef LOGCELL_H
+#define LOGCELL_H
 
 #include "Cell.h"
 
-class LineCell:public Cell {
+class LogCell:public Cell {
     private:
         int supplies;
         bool leader;
         bool supplier;
 
     public:
-        LineCell();
-        LineCell(int, int);
+        LogCell();
+        LogCell(int, int, int, int, bool, bool);
         inline bool hasLeader() { return leader; }
         inline bool setLeader(bool ldr) { leader = ldr; }
         inline bool isSupplied() { return supplier; }

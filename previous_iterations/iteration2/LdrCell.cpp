@@ -6,7 +6,7 @@
 #include <iostream>
 #include "LdrCell.h"
 
-LdrCell::LdrCell(int n, int pwr):Cell(n, ldr, 5, pwr), supplies(100), leader(true), supplier(true){}
+LdrCell::LdrCell(int n, int num, int pwr, int stock, bool lead, bool sup):Cell(n, ldr, num, pwr), supplies(stock), leader(lead), supplier(sup){}
 
 
 

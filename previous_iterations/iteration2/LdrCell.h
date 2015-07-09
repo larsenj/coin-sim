@@ -1,17 +1,23 @@
-#ifndef LINECELL_H
-#define LINECELL_H
+/*
+    LdrCell.h
+    Leadership provides coordination for all subordinate cell activity and 
+    with higher elements.
+*/
+
+#ifndef LDRCELL_H
+#define LDRCELL_H
 
 #include "Cell.h"
 
-class LineCell:public Cell {
+class LdrCell:public Cell {
     private:
         int supplies;
         bool leader;
         bool supplier;
 
     public:
-        LineCell();
-        LineCell(int, int);
+        LdrCell();
+        LdrCell(int, int, int, int, bool, bool);
         inline bool hasLeader() { return leader; }
         inline bool setLeader(bool ldr) { leader = ldr; }
         inline bool isSupplied() { return supplier; }

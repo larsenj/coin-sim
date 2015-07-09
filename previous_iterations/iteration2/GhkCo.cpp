@@ -11,13 +11,13 @@ GhkCo::GhkCo(int parentID, int childNum){
     int i = 1;
     for (; i < 4; i++)
         GhkVector.emplace_back(new GhkGroup(ID, i));
-    GhkHQ.emplace_back(new LdrCell(ID + i, 3)); //add leadership
+    GhkHQ.emplace_back(new LdrCell(ID + i, 5, 3, 100, true, true)); //add leadership
     i++; 
-    GhkHQ.emplace_back(new SctCell(ID + i, 2)); //add scouts
+    GhkHQ.emplace_back(new SctCell(ID + i, 5, 2)); //add scouts
     i++; 
-    GhkHQ.emplace_back(new LogCell(ID + i, 2)); //add logistics
+    GhkHQ.emplace_back(new LogCell(ID + i, 5, 2, 100, true, true)); //add logistics
     i++; 
-    GhkHQ.emplace_back(new MedCell(ID + i, 1)); //add medical
+    GhkHQ.emplace_back(new MedCell(ID + i, 5, 1, 100)); //add medical
 }
 
 void GhkCo::printMemberIDs(){
