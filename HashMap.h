@@ -1,7 +1,10 @@
+/*
+    HashMap.h
+    Hash table to store pointers to objects(cells), with integers(id) as keys
+*/
+
 #ifndef HASHMAP_H
 #define HASHMAP_H
-
-#include <cstddef>
 
 template <typename T>
 class HashMap {
@@ -9,15 +12,15 @@ class HashMap {
         static const int tableSize = 17;
         struct item{
             int id;
-            T* object; //maybe make std::shared_ptr<K>
+            T* object; //maybe make std::shared_ptr<T>
             item* next; 
         };
         item* HashTable[tableSize];
 
     public:
         HashMap();
-        int hash(int id);
-        void addItem(int id, T* object);
+        int hash(int);
+        void addItem(int, T*);
         int numItemsInIndex(int);
         T* getObj(int);
         int removeItem(int);

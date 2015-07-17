@@ -14,12 +14,14 @@ class Ghk {
     protected:
         int ID;
         int wEvents;
+        int daySIG[7];
         std::vector<std::unique_ptr<T>> GhkVector; //vector to hold next level down
         std::vector<std::unique_ptr<Cell>> GhkHQ; //holds HQ and staff cells
 
     public:
         Ghk(){}
         Ghk(int);//ID
+        inline int getDaySig(int day) { return daySIG[day]; }
         inline int getID() { return ID; }
         inline int getWeekEvents() { return wEvents; }
         //~Ghk();

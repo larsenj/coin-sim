@@ -33,14 +33,18 @@ int GhkCo::weekEvents(){
     std::cout << "Week events for Company " << ID << std::endl;
     wEvents = 0;
     int maxV = GhkVector.size();
+    //calculate week events from subordinate units
     for(int i = 0; i < maxV; i++)
         wEvents += GhkVector[i]->weekEvents();
     int maxH = GhkHQ.size();
+    //calculate week events from HQ & staff element
     for(int j = 0; j < 7; j++){
         std::cout << "\tCompany HQ elements day " << j+1 << std::endl;
         for (int k = 0; k < maxH; k++)
-            if(GhkHQ[k]->event(8)) //hardcoding 8 as max for now
+            if(GhkHQ[k]->event(8)) { //hardcoding 8 as max for now
                 wEvents++;
+                daySIG[j]++;
+        }
     }
     return wEvents; 
 }

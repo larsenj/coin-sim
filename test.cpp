@@ -3,11 +3,15 @@
 #include <cstddef>
 #include <string>
 #include "HashMap.h"
+#include "EntityManager.h"
+#include "GhkGroup.h"
 
 using namespace std;
 
 int main() {
 
+
+//HashMap tests
     HashMap<Cell> h;
     //100000000
     Cell* cell = new Cell(17000005);
@@ -20,29 +24,51 @@ int main() {
     cout << "hash of 17200009 = " << h.hash(17200009) << endl;   
     cout << "hash of 17200010 = " << h.hash(17200010) << endl;   
     Cell* a = h.getObj(cell->getID());
-    cout << "a id is " << a->getID() << endl;
+    if (a->getID() != cell->getID()) cout << "getObj fail" << endl;
+    else cout << "getObj success" << endl;
     int remove = h.removeItem(a->getID());
-    cout << "int is " << remove << endl;
     int fail = h.removeItem(1);
-    cout << "fail is " << fail << endl;
+    if (remove != 0 && fail != 1) cout << "removeItem fail" << endl;
+    else cout << "removeItem success" << endl;
     a = h.getObj(cell->getID());
     if (a == NULL)
-        cout << "remove worked" << endl;
+        cout << "get removed success" << endl;
     else
-        cout << "remove failed" << endl;
-    cout << "Adding the cell back in" << endl;
+        cout << "get removed failed" << endl;
     h.addItem(cell->getID(), cell);
-    cout << "Items in bucket 13 = " << h.numItemsInIndex(13) << endl;
-    cout << "Items in bucket 14 = " << h.numItemsInIndex(14) << endl;
-    cout << "Adding more cells" << endl;
+    if (h.numItemsInIndex(13) != 1 && h.numItemsInIndex(14) != 0) cout << 
+        "numItemsInIndex fail" << endl;
+    else cout << "numItemsInIndex success" << endl;
+    cout << "Adding more cells";
     Cell* cell2 = new Cell(17000006);
     h.addItem(cell2->getID(), cell2);
     Cell* cell3 = new Cell(17000007);
     h.addItem(cell3->getID(), cell3);
     Cell* cell4 = new Cell(17000104);
     h.addItem(cell4->getID(), cell4);
-    cout << "Listing all" << endl;
+    cout << " and listing all" << endl;
     h.listAll();
+    a = h.getObj(17000104);
+    if (a->getID() == 17000104)
+        cout << "\nlinked list works" << endl;
+    else
+        cout << "\nlinked list fail" << endl;
+//EntityManager Tests
+    EntityMgr->RegisterEntity(cell);
+    EntityMgr->RegisterEntity(cell2);
+    EntityMgr->RegisterEntity(cell3);
+    Cell* cell5 = EntityMgr->GetEntityFromID(cell2->getID());
+    if (cell5->getID() == cell2->getID()) cout << "get entity success" << endl;
+    else cout <<"get entity fail" << endl;
+    EntityMgr->RemoveEntity(cell2);
+    cell5 = EntityMgr->GetEntityFromID(cell2->getID());
+    if (cell5 == NULL) cout << "remove entity success" << endl;
+    else cout << "remove entity fail" << endl;
+
+//Create hierarchy and add to EM tests
+    //GhkGroup gg(17010000, 1);
+
+
 /*    std::cout << "\nTesting line cell:" << std::endl;
     LineCell a(1, 1, 1, 1, true, true);
     std::cout << "Type: " << a.cellName[a.getType()] << std::endl;

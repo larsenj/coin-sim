@@ -18,6 +18,7 @@ class Province {
         std::vector<std::unique_ptr<GhkCo>> efVector;//holds all Companies of the Province
         int wCount; //stores total number of SIGACTS for the week
         int ID; //first digit of number represents this province
+        int daySIG[7];
     public:
         std::string name;
         Province(){};
@@ -26,6 +27,7 @@ class Province {
         inline int getWeekCount() { return wCount; }
         inline int getID() { return ID; }
         inline std::string getName() { return name; }
+        inline int getDaySig(int day) { return daySIG[day]; }
         void weekEvents(); //runs the weekEvents function for all subordinates
         ~Province(){}
 };

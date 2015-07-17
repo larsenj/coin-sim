@@ -3,13 +3,17 @@
 */
 
 #include "GhkGroup.h"
+#include "EntityManager.h"
 #include <vector>
 #include <iostream>
 
 GhkGroup::GhkGroup(int parentID, int childNum){
     ID = parentID + (childNum * 100); //so look for the X's in 00700XX00
-    for (int i = 1; i < 4; i++)
+    for (int i = 1; i < 4; i++){
         GhkVector.emplace_back(new LineCell(ID+i, 10));
+       
+//        EntityMgr->RegisterEntity();
+    }
 }
 
 int GhkGroup::getCellID(int index){
@@ -39,7 +43,8 @@ int GhkGroup::weekEvents(){
     for (int i = 0; i < 7; i++)
     {
         std::cout << "\t\tDay " << i+1 << std::endl;    
-        wEvents += dayEvents();
+        daySIG[i] = dayEvents();
+        wEvents += daySIG[i];
     }
     return wEvents;
 }
