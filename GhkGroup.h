@@ -18,7 +18,9 @@ class GhkGroup : public Ghk<Cell> {
         GhkGroup(int, int); //parentID, childNum
         int getCellID(int);
         int dayEvents();
-        int weekEvents();    
+        int weekEvents();
+        void buildHQ(int);
+        //void registerCell(Cell*, bool);    
         ~GhkGroup();
 };
 

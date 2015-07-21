@@ -21,6 +21,11 @@ class Cell {
         inline int getWeekCount() { return wCount; }
         inline int getPower() { return power; }
         inline int getID() { return ID; }
+        virtual bool hasLeader(){}; 
+        virtual bool setLeader(){}; 
+        virtual bool isSupplied(){}; 
+        virtual bool setSupplied(){}; 
+        virtual int getSupplies(){};
         ~Cell();
 };
 

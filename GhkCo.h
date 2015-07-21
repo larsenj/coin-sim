@@ -16,6 +16,7 @@ class GhkCo : public Ghk<GhkGroup> {
         GhkCo(int, int); //parentID, childNum
         void printMemberIDs();
         int weekEvents();
+        void buildHQ(int);
         ~GhkCo();
 };
 

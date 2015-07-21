@@ -1,8 +1,11 @@
-testmain: test.o HashMap.o Cell.o EntityManager.o GhkGroup.o Ghk.o
-	g++ -std=c++0x -Wall test.o HashMap.o Cell.o EntityManager.o GhkGroup.o Ghk.o -o testmain
+testmain: test.o GhkCo.o HashMap.o Cell.o EntityManager.o GhkGroup.o Ghk.o LineCell.o MedCell.o LdrCell.o SctCell.o LogCell.o
+	g++ -std=c++0x test.o GhkCo.o HashMap.o Cell.o EntityManager.o GhkGroup.o Ghk.o LineCell.o MedCell.o LdrCell.o SctCell.o LogCell.o -o testmain
 
 test.o: test.cpp 
 	g++ -c -std=c++0x test.cpp
+
+GhkCo.o: GhkCo.cpp
+	g++ -c -std=c++0x GhkCo.cpp
 
 HashMap.o: HashMap.cpp
 	g++ -c -std=c++0x HashMap.cpp
@@ -19,11 +22,26 @@ GhkGroup.o: GhkGroup.cpp
 Ghk.o: Ghk.cpp
 	g++ -c -std=c++0x Ghk.cpp
 
+LineCell.o: LineCell.cpp
+	g++ -c -std=c++0x LineCell.cpp
+
+MedCell.o: MedCell.cpp
+	g++ -c -std=c++0x MedCell.cpp
+
+LogCell.o: LogCell.cpp
+	g++ -c -std=c++0x LogCell.cpp
+
+LdrCell.o: LdrCell.cpp
+	g++ -c -std=c++0x LdrCell.cpp
+
+SctCell.o: SctCell.cpp
+	g++ -c -std=c++0x SctCell.cpp
+
 cells:
 	g++ -c -std=c++0x *Cell.cpp
 
 clean:
-	rm EFOrg testmain *.o 
+	rm EFOrg testmain a.out *.o 
 
 #target: dependencies
 #	system command

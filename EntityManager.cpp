@@ -21,4 +21,12 @@ void EntityManager::RemoveEntity(int id) {
 Cell* EntityManager::GetEntityFromID(int id) {
     return entityMap.getObj(id);    
 }
-    
+
+void EntityManager::ListAll(){
+    entityMap.listAll();
+}
+
+void EntityManager::RemoveAll(){
+    entityMap.removeAll();
+}
+

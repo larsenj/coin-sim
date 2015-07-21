@@ -16,6 +16,7 @@ Cell::Cell(int name, CellType type, int numMembers, int pwr){
     members = numMembers;
     power = pwr;
     srand(time(NULL) + ID);
+    //std::cout << "Creating cell " << name << std::endl;
 }
 
 //Fix this, or make virtual, or move

@@ -1,14 +1,33 @@
 #include "CellWrapper.h"
 #include <iostream>
 #include <cstddef>
+#include <memory>
 #include <string>
 #include "HashMap.h"
 #include "EntityManager.h"
 #include "GhkGroup.h"
-
+#include "GhkCo.h"
+#include <vector>
 using namespace std;
 
 int main() {
+
+bool cellgen = true;
+LineCell* x = NULL;
+x = new LineCell(100,1);
+vector<Cell*> v;
+v.push_back(x);
+if(x->hasLeader() != v[0]->hasLeader())
+    cellgen = false;
+MedCell* y(new MedCell(101, 1));
+v.push_back(y);
+if(y->getID() != v[1]->getID())
+    cellgen = false;
+
+delete x;
+x = NULL;
+delete y;
+y = NULL;
 
 
 //HashMap tests
@@ -52,20 +71,61 @@ int main() {
     if (a->getID() == 17000104)
         cout << "\nlinked list works" << endl;
     else
-        cout << "\nlinked list fail" << endl;
+         cout << "\nlinked list fail" << endl;
+
 //EntityManager Tests
     EntityMgr->RegisterEntity(cell);
     EntityMgr->RegisterEntity(cell2);
     EntityMgr->RegisterEntity(cell3);
     Cell* cell5 = EntityMgr->GetEntityFromID(cell2->getID());
-    if (cell5->getID() == cell2->getID()) cout << "get entity success" << endl;
-    else cout <<"get entity fail" << endl;
+    bool getEnt = true;//test GetEntityFromID
+    if (cell5->getID() != cell2->getID()) getEnt = false;
     EntityMgr->RemoveEntity(cell2);
     cell5 = EntityMgr->GetEntityFromID(cell2->getID());
     if (cell5 == NULL) cout << "remove entity success" << endl;
     else cout << "remove entity fail" << endl;
+    EntityMgr->RemoveAll();
 
-//Create hierarchy and add to EM tests
+//testing vector of pointers, adding to EM
+    bool ghkgrp = true;
+    GhkGroup g(17010000, 1);
+    if (g.getID() != 17010100){
+        //cout << "GhkGroup creation fail" << endl;
+        ghkgrp = false;
+    }
+    for (int i = 0; i < 1; i++)
+        if (g.getCellID(i) != g.getID()+i+1){
+            //cout << "Cell creation fail" << endl;
+            ghkgrp = false;
+        }
+    cout << "Day events" << endl;
+    g.dayEvents();
+
+    GhkCo c(17000000, 1);
+
+    EntityMgr->ListAll();
+
+    LineCell* LC = new LineCell(1, 10);
+    bool lineCreation = true;
+    if (LC->getSupplies() != 100) lineCreation = false;
+    v.push_back(LC);
+    if (v[0]->getSupplies() != 100) lineCreation = false;
+
+    v.emplace_back(new LineCell(8, 10));
+    cout << "LineCell address =  " << v[1] << endl;
+    cout << "Pointer address =  " << &v[1] << endl;
+    cout << "[0] pointer address =  " << &v[0] << endl;
+    
+
+
+    (getEnt) ? cout << "Get entity success" << endl :
+        cout << "Get entity fail" << endl;
+    (cellgen)?cout << "Cellgen success" << endl : cout << "Cellgen fail" << endl;
+    (ghkgrp) ? cout << "GhkGroup creation success" << endl :
+        cout << "GhkGroup creation fail" << endl;
+    (lineCreation)? cout << "LineCell supplies success" << endl : cout << "LineCell supplies fail" << endl;
+
+    //Create hierarchy and add to EM tests
     //GhkGroup gg(17010000, 1);
 
 

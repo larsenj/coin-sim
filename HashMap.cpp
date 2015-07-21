@@ -151,7 +151,7 @@ int HashMap<T>::numItemsInIndex(int index){
 //list all keys in the table
 template<typename T>
 void HashMap<T>::listAll(){
-    item* ptr = NULL;;
+    item* ptr=nullptr;
     for(int i = 0; i < tableSize; i++){
         std::cout << "\nIndex " << i << ":";
         ptr = HashTable[i];
@@ -163,7 +163,21 @@ void HashMap<T>::listAll(){
             }//end while
         }//end if
     }//end for iteration through index
+    std::cout << std::endl;
 }
+
+//remove all items from table. Note: does NOT call destructors.
+template<typename T>
+void HashMap<T>::removeAll(){
+    for (int i = 0; i < tableSize; i++)
+        if (HashTable[i]->id != 0){
+            HashTable[i]->id = 0;
+            HashTable[i]->object = NULL;
+            HashTable[i]->next = NULL;
+        }
+    
+}
+
 
 template class HashMap<Cell>;
 

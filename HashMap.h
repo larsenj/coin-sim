@@ -6,6 +6,8 @@
 #ifndef HASHMAP_H
 #define HASHMAP_H
 
+#include<memory>
+
 template <typename T>
 class HashMap {
     private:
@@ -25,6 +27,7 @@ class HashMap {
         T* getObj(int);
         int removeItem(int);
         void listAll();
+        void removeAll();
 };
 
 

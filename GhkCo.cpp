@@ -2,22 +2,16 @@
     GhkCo.cpp
 */
 
-#include "GhkCo.h"
 #include <vector>
 #include <iostream>
+#include "GhkCo.h"
+#include "EntityManager.h"
 
 GhkCo::GhkCo(int parentID, int childNum){
     ID = parentID + (childNum * 10000); //so look for X's in 007XX0000
-    int i = 1;
-    for (; i < 4; i++)
+    for (int i = 1; i < 4; i++)
         GhkVector.emplace_back(new GhkGroup(ID, i));
-    GhkHQ.emplace_back(new LdrCell(ID + i, 3)); //add leadership
-    i++; 
-    GhkHQ.emplace_back(new SctCell(ID + i, 2)); //add scouts
-    i++; 
-    GhkHQ.emplace_back(new LogCell(ID + i, 2)); //add logistics
-    i++; 
-    GhkHQ.emplace_back(new MedCell(ID + i, 1)); //add medical
+    buildHQ(ID);
 }
 
 void GhkCo::printMemberIDs(){
@@ -49,6 +43,22 @@ int GhkCo::weekEvents(){
     return wEvents; 
 }
 
+void GhkCo::buildHQ(int ID){
+    int i = GhkVector.size() + 1;
+    GhkHQ.emplace_back(new LdrCell(ID + i, 3)); //add leadership
+    EntityMgr->RegisterEntity(GhkHQ.back());
+    i++; 
+    GhkHQ.emplace_back(new SctCell(ID + i, 2)); //add scouts
+    EntityMgr->RegisterEntity(GhkHQ.back());
+    i++; 
+    GhkHQ.emplace_back(new LogCell(ID + i, 2)); //add logistics
+    EntityMgr->RegisterEntity(GhkHQ.back());
+    i++; 
+    GhkHQ.emplace_back(new MedCell(ID + i, 1)); //add medical
+    EntityMgr->RegisterEntity(GhkHQ.back());
+}
+
+    
 GhkCo::~GhkCo(){
     std::cout << "Deleting GhkCo " << getID() << std::endl;
 }

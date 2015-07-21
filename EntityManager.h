@@ -21,6 +21,8 @@ class EntityManager {
         void RemoveEntity(Cell* rCell);
         void RemoveEntity(int id);
         Cell* GetEntityFromID(int id);
+        void ListAll();
+        void RemoveAll();
 };
 
 #define EntityMgr EntityManager::Instance()
