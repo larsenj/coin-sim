@@ -6,7 +6,13 @@
 #include <iostream>
 #include "LineCell.h"
 
-LineCell::LineCell(int n, int pwr):Cell(n, line, 5, pwr), supplies(100), leader(true), supplier(true){std::cout<<"Creating LineCell " << n << std::endl;}
+LineCell::LineCell(int n, int pwr):Cell(n, line, 5, pwr), supplies(100), leader(true), supplier(true){
+//    std::cout<<"Creating LineCell " << n << std::endl;
+}
 
+LineCell::LineCell(int n, int pwr, int higher):Cell(n, line, 5, pwr, higher), 
+    supplies(100), leader(true), supplier(true){
+//    std::cout<<"Creating LineCell " << n << std::endl;
+}
 
 

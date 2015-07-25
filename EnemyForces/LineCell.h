@@ -12,10 +12,11 @@ class LineCell:public Cell {
     public:
         LineCell();
         LineCell(int, int);
+        LineCell(int, int, int);//ID,pwr,higher
         inline bool hasLeader() { return leader; }
-        inline bool setLeader(bool ldr) { leader = ldr; }
+        inline void setLeader(bool ldr) { leader = ldr; }
         inline bool isSupplied() { return supplier; }
-        inline bool setSupplied(bool sup) { supplier = sup; }
+        inline void setSupplied(bool sup) { supplier = sup; }
         inline int getSupplies() { return supplies; }
 };
 

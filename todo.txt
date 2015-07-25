@@ -10,3 +10,5 @@ _X_ Track events better at each level(put array[7] back in) //consider 2 arrays
 ___ Add support spectrum tracker to provinces - security
 ___ Add intel tracker to cells. May need to be an array or vector.
 
+
+

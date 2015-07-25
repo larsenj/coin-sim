@@ -1,5 +1,7 @@
 /*
     EntityManager.h
+    Used to register and track all Cells. ID, pointer pair stored in the
+    hash table.
 */
 
 #ifndef ENTITYMANAGER_H
@@ -16,6 +18,7 @@ class EntityManager {
 
 
     public:
+        //singleton
         static EntityManager* Instance();
         void RegisterEntity(Cell* newCell);
         void RemoveEntity(Cell* rCell);

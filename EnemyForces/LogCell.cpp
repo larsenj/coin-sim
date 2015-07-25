@@ -8,5 +8,6 @@
 
 LogCell::LogCell(int n, int pwr):Cell(n, log, 5, pwr), supplies(100), leader(true), supplier(true){}
 
+LogCell::LogCell(int n, int pwr, int higher):Cell(n, log, 5, pwr, higher), supplies(100), leader(true), supplier(true){}
 
 

@@ -1,6 +1,6 @@
 /*
  *  CommoNet.h
- *
+ *  Used for sending messages between entities.
  */
 
 #ifndef COMMONET_H
@@ -9,11 +9,14 @@
 #include <set>
 #include "EnemyForces/Cell.h"
 
+const double SEND_NOW = 0.0;
+const int NO_EXTRA_INFO = 0;
 
 class CommoNet {
 
     private:
-        //container for delayed messages
+        //container for delayed messages. Set stores the data in a priority 
+        //tree and avoids duplicates.
         std::set<Message> PriorityDispatch;
         void Dispatch(Cell* Receiver, const Message& msg);
         CommoNet(){}

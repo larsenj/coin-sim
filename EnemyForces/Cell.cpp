@@ -9,6 +9,7 @@ Cell::Cell(int name){
     members = 5;
     cType = line;
     srand(time(NULL) + ID);//cellNumber is added to avoid multiple cells having the same seed
+    isAlive = true;
 }
 
 Cell::Cell(int name, CellType type, int numMembers, int pwr){
@@ -16,6 +17,18 @@ Cell::Cell(int name, CellType type, int numMembers, int pwr){
     cType = type;
     members = numMembers;
     power = pwr;
+    srand(time(NULL) + ID);
+    isAlive = true;
+    //std::cout << "Creating cell " << name << std::endl;
+}
+
+Cell::Cell(int name, CellType type, int numMembers, int pwr, int higher){
+    ID = name;
+    cType = type;
+    members = numMembers;
+    power = pwr;
+    isAlive = true;
+    higherID = higher;
     srand(time(NULL) + ID);
     //std::cout << "Creating cell " << name << std::endl;
 }

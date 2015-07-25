@@ -27,14 +27,14 @@ GhkGroup::GhkGroup(int parentID, int childNum){
 
     //create 3 line cells
     for (int i = 1; i < 4; i++){
-        GhkVector.emplace_back(new LineCell(ID+i, 10));
+        GhkVector.emplace_back(new LineCell(ID+i, 10, ID+6));
         EntityMgr->RegisterEntity(GhkVector.back());
     }
 
     //create HQ and staff element
     buildHQ(ID);    
 
-    
+/*    
     std::cout << "testing stuff" <<std::endl;
 //    std::cout << "L1 hasLeader is " << L1->hasLeader() << std::endl;
     std::cout << "[0] type is " << GhkVector[0]->getType() << std::endl;
@@ -45,18 +45,20 @@ GhkGroup::GhkGroup(int parentID, int childNum){
 //    std::cout << "L1 hasLeader is " << L1->hasLeader() << std::endl;
 //    std::cout << "L1 supplies = " << L1->getSupplies() << std::endl;
     std::cout << "[0] supplies = " << GhkVector[0]->getSupplies() << std::endl;
+*/
+
 }
 
 
 void GhkGroup::buildHQ(int ID){
     int i = GhkVector.size() + 1;
-    GhkHQ.emplace_back(new LdrCell(ID + i, 3)); //add leadership
+    GhkHQ.emplace_back(new LogCell(ID + i, 2)); //add stics
     EntityMgr->RegisterEntity(GhkHQ.back());
     i++; 
     GhkHQ.emplace_back(new SctCell(ID + i, 2)); //add scouts
     EntityMgr->RegisterEntity(GhkHQ.back());
     i++; 
-    GhkHQ.emplace_back(new LogCell(ID + i, 2)); //add logistics
+    GhkHQ.emplace_back(new LdrCell(ID + i, 3)); //add leadership
     EntityMgr->RegisterEntity(GhkHQ.back());
     i++; 
     GhkHQ.emplace_back(new MedCell(ID + i, 1)); //add medical

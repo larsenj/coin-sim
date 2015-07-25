@@ -18,6 +18,7 @@ class LdrCell:public Cell {
     public:
         LdrCell();
         LdrCell(int, int);
+        LdrCell(int, int, int);//ID, pwr, higher
         inline bool hasLeader() { return leader; }
         inline bool setLeader(bool ldr) { leader = ldr; }
         inline bool isSupplied() { return supplier; }
