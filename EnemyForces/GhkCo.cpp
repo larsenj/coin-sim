@@ -5,7 +5,7 @@
 #include <vector>
 #include <iostream>
 #include "GhkCo.h"
-#include "EntityManager.h"
+#include "../EntityManager.h"
 
 GhkCo::GhkCo(int parentID, int childNum){
     ID = parentID + (childNum * 10000); //so look for X's in 007XX0000
@@ -23,14 +23,17 @@ void GhkCo::printMemberIDs(){
         std::cout << GhkHQ[i]->getType() << " " << GhkHQ[i]->getID() << std::endl;
 }
 
+//call each cell's dayEvents() 7 times, storing results in an array
 int GhkCo::weekEvents(){
     std::cout << "Week events for Company " << ID << std::endl;
     wEvents = 0;
     int maxV = GhkVector.size();
+
     //calculate week events from subordinate units
     for(int i = 0; i < maxV; i++)
         wEvents += GhkVector[i]->weekEvents();
     int maxH = GhkHQ.size();
+    
     //calculate week events from HQ & staff element
     for(int j = 0; j < 7; j++){
         std::cout << "\tCompany HQ elements day " << j+1 << std::endl;
@@ -43,6 +46,7 @@ int GhkCo::weekEvents(){
     return wEvents; 
 }
 
+//build the HQ and staff element into the GhkHQ vector, and register with EM
 void GhkCo::buildHQ(int ID){
     int i = GhkVector.size() + 1;
     GhkHQ.emplace_back(new LdrCell(ID + i, 3)); //add leadership

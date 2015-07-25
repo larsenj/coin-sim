@@ -5,7 +5,7 @@
 #include <cstddef>
 #include <iostream>
 #include "HashMap.h"
-#include "Cell.h"
+#include "EnemyForces/Cell.h"
 
 template<typename T>
 HashMap<T>::HashMap(){

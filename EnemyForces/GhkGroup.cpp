@@ -6,7 +6,7 @@
 #include <iostream>
 #include <memory>
 #include "GhkGroup.h"
-#include "EntityManager.h"
+#include "../EntityManager.h"
 
 /*void GhkGroup::registerCell(Cell* x, bool lineVector){
     EntityMgr->RegisterEntity(x);
@@ -98,10 +98,12 @@ int GhkGroup::weekEvents(){
     return wEvents;
 }
 
-//TODO: fix dangling pointers?
 GhkGroup::~GhkGroup(){
     std::cout << "Deleting GhkGroup " << getID() << std::endl;
     for (int i = 0; i < GhkVector.size(); i++){
         delete GhkVector[i]; 
+    }
+    for (int i = 0; i < GhkHQ.size(); i++){
+        delete GhkHQ[i]; 
     }
 }

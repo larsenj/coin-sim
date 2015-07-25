@@ -6,7 +6,7 @@
 #define ENTITYMANAGER_H
 
 #include "HashMap.h"
-#include "Cell.h"
+#include "EnemyForces/Cell.h"
 #include <memory>
 
 class EntityManager {

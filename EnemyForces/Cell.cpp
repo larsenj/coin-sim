@@ -2,6 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <iostream>
+#include <string>
 
 Cell::Cell(int name){
     ID = name;
@@ -37,6 +38,11 @@ bool Cell::event(int chance){
     //supplies -= 30;
     std::cout << cellName[cType] << " cell " << ID << " performed an action." << std::endl;
     return true;
+}
+
+std::string Cell::getType() {
+    std::string s = cellName[cType];
+    return s;
 }
 
 Cell::~Cell(){

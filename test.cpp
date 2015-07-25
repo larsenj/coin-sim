@@ -1,13 +1,15 @@
-#include "CellWrapper.h"
+//#include "CellWrapper.h"
+#include "EFWrapper.h"
 #include <iostream>
 #include <cstddef>
 #include <memory>
 #include <string>
 #include "HashMap.h"
 #include "EntityManager.h"
-#include "GhkGroup.h"
-#include "GhkCo.h"
+//#include "GhkGroup.h"
+//#include "GhkCo.h"
 #include <vector>
+
 using namespace std;
 
 int main() {
@@ -86,6 +88,16 @@ y = NULL;
     else cout << "remove entity fail" << endl;
     EntityMgr->RemoveAll();
 
+/*    //cleanup
+    delete cell;
+    cell = nullptr;
+    delete cell2;
+    cell2 = nullptr;
+    delete cell3;
+    cell3 = nullptr;
+    delete cell4;
+    cell4 = nullptr;
+*/
 //testing vector of pointers, adding to EM
     bool ghkgrp = true;
     GhkGroup g(17010000, 1);
@@ -100,21 +112,20 @@ y = NULL;
         }
     cout << "Day events" << endl;
     g.dayEvents();
+    g.~GhkGroup();
 
-    GhkCo c(17000000, 1);
-
+    unique_ptr<GhkCo> c(new GhkCo(17000000, 1));
     EntityMgr->ListAll();
 
     LineCell* LC = new LineCell(1, 10);
     bool lineCreation = true;
     if (LC->getSupplies() != 100) lineCreation = false;
     v.push_back(LC);
-    if (v[0]->getSupplies() != 100) lineCreation = false;
-
+    if (v.back()->getSupplies() != 100)lineCreation = false;
     v.emplace_back(new LineCell(8, 10));
-    cout << "LineCell address =  " << v[1] << endl;
-    cout << "Pointer address =  " << &v[1] << endl;
-    cout << "[0] pointer address =  " << &v[0] << endl;
+//    cout << "LineCell address =  " << v[1] << endl;
+//    cout << "Pointer address =  " << &v[1] << endl;
+ //   cout << "[0] pointer address =  " << &v[0] << endl;
     
 
 

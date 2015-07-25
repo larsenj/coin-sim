@@ -1,6 +1,8 @@
 #ifndef CELL_H
 #define CELL_H
 
+#include<string>
+
 enum CellType { line, ldr, log, sct, med };
 
 class Cell {
@@ -17,7 +19,8 @@ class Cell {
         Cell(int, CellType, int, int);
         bool event(int);
         const char* cellName[5] = { "line", "ldr", "log", "scout", "med" };
-        inline CellType getType() { return cType;}
+        inline CellType getCellType() { return cType;}
+        std::string getType(); 
         inline int getWeekCount() { return wCount; }
         inline int getPower() { return power; }
         inline int getID() { return ID; }
