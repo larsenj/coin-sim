@@ -16,7 +16,7 @@ class GhkGroup : public Ghk<Cell> {
     public:
         //GhkGroup();
         GhkGroup(int, int); //parentID, childNum
-        int getCellID(int);
+        //int getCellID(int);
         int dayEvents();
         int weekEvents();
         void buildHQ(int);

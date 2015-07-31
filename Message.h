@@ -43,15 +43,15 @@ const double SmallestDelay = 0.25;
 //difference is less then the minimum we care about, then check to see if the 
 //various data fields are the same.
 inline bool operator==(const Message& m1, const Message m2){
-    return( fabs(t1.DispatchTime - t2.DispatchTime) < SmallestDelay) &&
+    return( fabs(m1.DispatchTime - m2.DispatchTime) < SmallestDelay) &&
         (m1.Sender == m2.Sender) &&
         (m1.Receiver == m2.Receiver) &&
         (m1.Msg == m2.Msg);
 }
 
 //First make sure they aren't the same message, then see which is earlier
-inline bool operaator<(const Message& m1, const Message m2){
-    if (t1 == t2)
+inline bool operator<(const Message& m1, const Message m2){
+    if (m1 == m2)
         return false;
     else
         return (m1.DispatchTime < m2.DispatchTime);
@@ -60,7 +60,7 @@ inline bool operaator<(const Message& m1, const Message m2){
 //debugging stuff to see the messages being sent
 inline std::ostream& operator<<(std::ostream& os, const Message& m) {
     os << "time: " << m.DispatchTime << " Sender: " << m.Sender << " Receiver: " << m.Receiver << " Msg: " << m.Msg;
-    return os
+    return os;
 }
 
 //helper function for unsing ExtraInfo as an appropriate type

@@ -8,5 +8,6 @@
 
 SctCell::SctCell(int n, int pwr):Cell(n, sct, 3, pwr){}
 
+SctCell::SctCell(int n, int pwr, int higher):Cell(n, sct, 3, pwr, higher){}
 
 

@@ -22,6 +22,10 @@ class Ghk {
         Ghk(){}
         Ghk(int);//ID
         //void buildHQ(int);
+        inline int getCellID(int index) {return GhkVector[index]->ID;}
+        inline int getHQID(int index) {
+            int tempID = ID;
+            return tempID;}
         inline int getDaySig(int day) { return daySIG[day]; }
         inline int getID() { return ID; }
         inline int getWeekEvents() { return wEvents; }

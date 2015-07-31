@@ -17,6 +17,7 @@ class MedCell:public Cell {
     public:
         MedCell();
         MedCell(int, int);//name, pwr
+        MedCell(int, int, int);//name, pwr
         //inline bool hasLeader() { return leader; }
         //inline bool setLeader(bool ldr) { leader = ldr; }
         //inline bool isSupplied() { return supplier; }

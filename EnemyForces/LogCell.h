@@ -8,6 +8,8 @@
 #define LOGCELL_H
 
 #include "Cell.h"
+#include "../Message.h"
+#include "../CommoNet.h"
 
 class LogCell:public Cell {
     private:
@@ -19,10 +21,12 @@ class LogCell:public Cell {
         LogCell();
         LogCell(int, int);
         LogCell(int, int, int);
+        bool HandleMessage(const Message&);
+        bool event(int);
         inline bool hasLeader() { return leader; }
-        inline bool setLeader(bool ldr) { leader = ldr; }
+        inline void setLeader(bool ldr) { leader = ldr; }
         inline bool isSupplied() { return supplier; }
-        inline bool setSupplied(bool sup) { supplier = sup; }
+        inline void setSupplied(bool sup) { supplier = sup; }
 };
 
 #endif

@@ -7,9 +7,12 @@
 #ifndef CELL_H
 #define CELL_H
 
-#include<string>
+#include <string>
+#include <vector>
+#include "../Message.h"
+#include "../MessageTypes.h"
 
-enum CellType { line, ldr, log, sct, med };
+enum CellType { line, ldr, logistics, sct, med };
 
 class Cell {
     protected:
@@ -27,9 +30,9 @@ class Cell {
         Cell(int);
         Cell(int, CellType, int, int);//name,type,members,pwr
         Cell(int, CellType, int, int, int);//name,type,members,pwr,higher
-        bool event(int);
+        virtual bool event(int);
         const char* cellName[5] = { "line", "ldr", "log", "scout", "med" };
-        virtual bool HandleMessage(){};
+        virtual bool HandleMessage(const Message&){};
         ~Cell();
 
         /*-----Getters and Setters -----*/
@@ -48,6 +51,7 @@ class Cell {
         virtual bool isSupplied(){}; 
         virtual void setSupplied(){}; 
         virtual int getSupplies(){};
+        virtual void buildLdrC2(std::vector<Cell*>&, std::vector<Cell*>&){};
 };
 
 #endif

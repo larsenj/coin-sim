@@ -1,47 +1,26 @@
-testmain: test.o GhkCo.o HashMap.o Cell.o EntityManager.o GhkGroup.o Ghk.o LineCell.o MedCell.o LdrCell.o SctCell.o LogCell.o
-	g++ -std=c++0x test.o GhkCo.o HashMap.o Cell.o EntityManager.o GhkGroup.o Ghk.o LineCell.o MedCell.o LdrCell.o SctCell.o LogCell.o -o testmain
+CC = g++
+CFLAGS = -std=c++0x -pthread 
+OBJECTS = main.o Province.o GhkCo.o HashMap.o Cell.o EntityManager.o GhkGroup.o Ghk.o CommoNet.o LineCell.o MedCell.o LdrCell.o SctCell.o LogCell.o 
 
-test.o: test.cpp 
-	g++ -c -std=c++0x test.cpp
+#OBJECTS = test.o Province.o GhkCo.o HashMap.o Cell.o EntityManager.o GhkGroup.o Ghk.o CommoNet.o LineCell.o MedCell.o LdrCell.o SctCell.o LogCell.o 
 
-GhkCo.o: EnemyForces/GhkCo.cpp
-	g++ -c -std=c++0x EnemyForces/GhkCo.cpp
+Coin: $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o Coin
 
-HashMap.o: HashMap.cpp
-	g++ -c -std=c++0x HashMap.cpp
+#testmain: $(OBJECTS)
+#	$(CC) $(CFLAGS) $(OBJECTS) -o testmain
 
-Cell.o: EnemyForces/Cell.cpp
-	g++ -c -std=c++0x EnemyForces/Cell.cpp
+#test.o: test.cpp
+#	$(CC) $(CFLAGS) -c test.cpp
 
-EntityManager.o: EntityManager.cpp
-	g++ -c -std=c++0x EntityManager.cpp
+%.o: EnemyForces/%.cpp
+	$(CC) $(CFLAGS) -c $<
 
-GhkGroup.o: EnemyForces/GhkGroup.cpp
-	g++ -c -std=c++0x EnemyForces/GhkGroup.cpp
-
-Ghk.o: EnemyForces/Ghk.cpp
-	g++ -c -std=c++0x EnemyForces/Ghk.cpp
-
-LineCell.o: EnemyForces/LineCell.cpp
-	g++ -c -std=c++0x EnemyForces/LineCell.cpp
-
-MedCell.o: EnemyForces/MedCell.cpp
-	g++ -c -std=c++0x EnemyForces/MedCell.cpp
-
-LogCell.o: EnemyForces/LogCell.cpp
-	g++ -c -std=c++0x EnemyForces/LogCell.cpp
-
-LdrCell.o: EnemyForces/LdrCell.cpp
-	g++ -c -std=c++0x EnemyForces/LdrCell.cpp
-
-SctCell.o: EnemyForces/SctCell.cpp
-	g++ -c -std=c++0x EnemyForces/SctCell.cpp
-
-cells:
-	g++ -c -std=c++0x EnemyForces/*Cell.cpp
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $<
 
 clean:
-	rm testmain a.out *.o  
+	rm Coin testmain a.out *.o  
 
 #target: dependencies
 #	system command

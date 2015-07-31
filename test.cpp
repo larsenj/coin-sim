@@ -1,4 +1,3 @@
-//#include "CellWrapper.h"
 #include "EFWrapper.h"
 #include <iostream>
 #include <cstddef>
@@ -6,14 +5,53 @@
 #include <string>
 #include "HashMap.h"
 #include "EntityManager.h"
-//#include "GhkGroup.h"
-//#include "GhkCo.h"
+#include "CommoNet.h"
+#include "Province.h"
 #include <vector>
 
 using namespace std;
 
 int main() {
 
+    std::cout << "\nTesting Province" << std::endl;
+    Province p("Oz", 1, 2, 50);
+    std::cout << p.getName() << "'s ID is " << p.getID() << std::endl;
+    cout << "Running weekEvents\n----------------------" << endl;
+    p.weekEvents();
+    cout << "\nwCount is " << p.getWeekCount() << endl;
+
+
+    (p.getStability() == 50) ? cout << "getStab success" << endl :
+        cout << "getStab FAIL" << endl;
+    
+    bool testUp = true;
+    p.upStability(5);
+    if (p.getStability() != 55) testUp = false;
+    p.upStability(1000);
+    if (p.getStability() != 100) testUp = false;
+
+    bool testDown = true;
+    p.downStability(5);
+    if (p.getStability() != 95) testDown = false;
+    p.downStability(1000);
+    if (p.getStability() != 0) testDown = false;
+
+    (testUp) ? cout << "upStab success" << endl :
+        cout << "upStab FAIL" << endl;
+    (testDown) ? cout << "downStab success" << endl :
+        cout << "downStab FAIL" << endl;
+
+
+}
+/*  
+ 
+GhkGroup f(17020000, 1);
+f.dayEvents();
+f.dayEvents();
+f.dayEvents();
+std::cout << std::endl;
+ 
+   
 bool cellgen = true;
 LineCell* x = NULL;
 x = new LineCell(100,1);
@@ -73,7 +111,6 @@ y = NULL;
     if (a->getID() == 17000104)
         cout << "\nlinked list works" << endl;
     else
-         cout << "\nlinked list fail" << endl;
 
 //EntityManager Tests
     EntityMgr->RegisterEntity(cell);
@@ -87,7 +124,7 @@ y = NULL;
     if (cell5 == NULL) cout << "remove entity success" << endl;
     else cout << "remove entity fail" << endl;
     EntityMgr->RemoveAll();
-
+*/
 /*    //cleanup
     delete cell;
     cell = nullptr;
@@ -98,6 +135,8 @@ y = NULL;
     delete cell4;
     cell4 = nullptr;
 */
+
+/*    
 //testing vector of pointers, adding to EM
     bool ghkgrp = true;
     GhkGroup g(17010000, 1);
@@ -135,7 +174,7 @@ y = NULL;
     (ghkgrp) ? cout << "GhkGroup creation success" << endl :
         cout << "GhkGroup creation fail" << endl;
     (lineCreation)? cout << "LineCell supplies success" << endl : cout << "LineCell supplies fail" << endl;
-
+*/
     //Create hierarchy and add to EM tests
     //GhkGroup gg(17010000, 1);
 
@@ -210,6 +249,3 @@ y = NULL;
     cout << "\nwCount is " << p.getWeekCount() << endl;
 */
 
-    std::cout << std::endl;
-
-}

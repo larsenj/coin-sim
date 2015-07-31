@@ -2,13 +2,15 @@ Iteration 3
 
 _X_ Streamline constructors for cells
 _X_ Create Entity Manager Class
-_X_ Create hashmap for EM //learning experience - next iteration will use std::unordered_map
+_X_ Create hashmap for EM //learning experience - next iteration consider 
+    std::unordered_map
 _X_ Integrate EM w/ cells/task org 
-___ Create Messaging system
-___ Integrate messaging with cells
+_X_ Create Messaging system
+_X_ Integrate messaging with cells
 _X_ Track events better at each level(put array[7] back in) //consider 2 arrays
-___ Add support spectrum tracker to provinces - security
-___ Add intel tracker to cells. May need to be an array or vector.
+_X_ Add support spectrum tracker to provinces - security
 
-
+Pushed back to next iteration:
+___ Add intel tracker to cells. May need to be an array or vector. Decide if 
+    Ldr will track all intel or if indvidual line cells will.
 

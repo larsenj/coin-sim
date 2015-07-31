@@ -15,13 +15,14 @@
 
 void provinceEvents(Province* P);
 int validInput();
+void printSummary(int num, Province** theater);
 
 int main(int argc, char* argv[]){
     
     
     //check for correct usage
     if (argc != 2) {
-        std::cerr << "Usage: ThreadCells [number of threads]\n";
+        std::cerr << "Usage: Coin [number of threads]\n";
         return 1;
     }
 
@@ -79,10 +80,7 @@ int main(int argc, char* argv[]){
         for (int j = 0; j < numProvinces; j++)
             theater[j]->weekEvents();
 
-        std::cout << "\nSummary:" << std::endl;
-        for (int k = 0; k < numProvinces; k++)
-            std::cout << "\t" << theater[k]->getName() << " had " << 
-                theater[k]->getWeekCount() << " SIGACTS." << std::endl;
+        printSummary(numProvinces, theater);
 
         std::cout << "Run another week?(y/n) ";
         std::cin >> goAgain;
@@ -94,13 +92,20 @@ void provinceEvents(Province* P){
     P->weekEvents();
 }
 
+void printSummary(int num, Province** theater){
+    std::cout << "\nSummary:" << std::endl;
+    for (int k = 0; k < num; k++)
+        std::cout << "\t" << theater[k]->getName() << " had " << 
+            theater[k]->getWeekCount() << " SIGACTS." << std::endl;
+}
+
 int validInput(){
     int x;
     std::cin >> x;
-    while(std::cin.fail()){
+    while(std::cin.fail() || x <= 0){
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "You must enter a number: ";
+        std::cout << "You must enter a positive number: ";
         std::cin >> x;
     }
     return x;

@@ -49,17 +49,33 @@ int GhkCo::weekEvents(){
 //build the HQ and staff element into the GhkHQ vector, and register with EM
 void GhkCo::buildHQ(int ID){
     int i = GhkVector.size() + 1;
+    int ldrID = ID+6;
+    GhkHQ.emplace_back(new LogCell(ID + i, 2, ldrID)); //add logistics
+    EntityMgr->RegisterEntity(GhkHQ.back());
+    i++; 
+    GhkHQ.emplace_back(new SctCell(ID + i, 2, ldrID)); //add scouts
+    EntityMgr->RegisterEntity(GhkHQ.back());
+    i++; 
     GhkHQ.emplace_back(new LdrCell(ID + i, 3)); //add leadership
     EntityMgr->RegisterEntity(GhkHQ.back());
     i++; 
-    GhkHQ.emplace_back(new SctCell(ID + i, 2)); //add scouts
+    GhkHQ.emplace_back(new MedCell(ID + i, 1, ldrID)); //add medical
     EntityMgr->RegisterEntity(GhkHQ.back());
-    i++; 
-    GhkHQ.emplace_back(new LogCell(ID + i, 2)); //add logistics
-    EntityMgr->RegisterEntity(GhkHQ.back());
-    i++; 
-    GhkHQ.emplace_back(new MedCell(ID + i, 1)); //add medical
-    EntityMgr->RegisterEntity(GhkHQ.back());
+
+    //create the Co Ldr's list of staff and subordinate leaders
+    if(GhkHQ[2]->getCellType() == ldr){
+        //create a temporary vector of subordinate ldr cells
+        int gvSize = GhkVector.size();
+        std::vector<Cell*> GhkTmp(gvSize);
+        int tmpID;
+        for (int j = 0; j < gvSize; j++){
+            tmpID = GhkVector[j]->getHQID(2);
+            GhkTmp[j] = EntityMgr->GetEntityFromID(tmpID);            
+        }
+        //pass in temp vector and hq vector to build function
+        GhkHQ[2]->buildLdrC2(GhkTmp, GhkHQ);
+    } 
+
 }
 
     

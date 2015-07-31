@@ -44,7 +44,7 @@ bool Cell::event(int chance){
         //    supplies += 10;        
         //if (isSupplied())
             //supplies += 10;
-        std::cout << cellName[cType] << " cell " << ID << " did nothing." << std::endl;
+        //std::cout << cellName[cType] << " cell " << ID << " did nothing." << std::endl;
         return false;
     }
 

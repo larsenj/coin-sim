@@ -8,9 +8,10 @@
 
 #include <set>
 #include "EnemyForces/Cell.h"
+#include "Message.h"
 
 const double SEND_NOW = 0.0;
-const int NO_EXTRA_INFO = 0;
+//const void* NO_EXTRA_INFO = nullptr;
 
 class CommoNet {
 
@@ -24,7 +25,6 @@ class CommoNet {
     public:
         //singleton
         static CommoNet* Instance();
-
         //send a message
         void Send(double, int, int, int, void*); //delay,sender,receiver,msg,extra
         //call this each time through main loop
