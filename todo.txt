@@ -1,16 +1,13 @@
-Iteration 3
+Iteration 4
 
-_X_ Streamline constructors for cells
-_X_ Create Entity Manager Class
-_X_ Create hashmap for EM //learning experience - next iteration consider 
-    std::unordered_map
-_X_ Integrate EM w/ cells/task org 
-_X_ Create Messaging system
-_X_ Integrate messaging with cells
-_X_ Track events better at each level(put array[7] back in) //consider 2 arrays
-_X_ Add support spectrum tracker to provinces - security
-
-Pushed back to next iteration:
+___ Create base State class.
+___ Various states.
+___ StateMachine class.
+___ Incorporate StateMachine into cells.
+___ Adjust message handling to work with states.
+___ Double-check thread safety for singletons.
 ___ Add intel tracker to cells. May need to be an array or vector. Decide if 
     Ldr will track all intel or if indvidual line cells will.
+___ Add more variety to LineCell actions - at least a population intimidation/
+    propaganda action.
 
